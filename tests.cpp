@@ -4,7 +4,7 @@
 
 #define CATCH_CONFIG_MAIN // defines main() automatically
 #include "catch.hpp"
-#include<string>
+#include <string>
 #include "student.hpp" // student implementations
 
 using namespace std;
@@ -55,7 +55,7 @@ TEST_CASE ("Exercise Two")
 }
 TEST_CASE ("Exercise Two Exceptions")
 {
-    REQUIRE_THROWS_WITH( exerciseTwo("E"), Contains( "ERROR") || Contains("error") );
+    CHECK_THROWS_WITH( exerciseTwo("E"), Contains( "ERROR") || Contains("error") );
     //Checks all letters throw an error
     for (char i = 'A'; i<='Z'; i++)
     {
@@ -69,9 +69,9 @@ TEST_CASE ("Exercise Two Exceptions")
         REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
         testValue = "";
     }
-    REQUIRE_THROWS_WITH( exerciseTwo("110e0"), Contains( "ERROR") || Contains("error") );
-    REQUIRE_THROWS_WITH( exerciseTwo("1832"), Contains( "ERROR") || Contains("error") );
-    REQUIRE_THROWS_WITH( exerciseTwo("45906"), Contains( "ERROR") || Contains("error") );
+    CHECK_THROWS_WITH( exerciseTwo("110e0"), Contains( "ERROR") || Contains("error") );
+    CHECK_THROWS_WITH( exerciseTwo("1832"), Contains( "ERROR") || Contains("error") );
+    CHECK_THROWS_WITH( exerciseTwo("45906"), Contains( "ERROR") || Contains("error") );
     //Checks single digit numbers
     for (char i = '2'; i<='9'; i++)
     {
@@ -81,6 +81,25 @@ TEST_CASE ("Exercise Two Exceptions")
     }
 }
 
+TEST_CASE("Exercise Three")
+{
+    CHECK( exerciseThree(10)== "1010");
+    CHECK ( exerciseThree(1)=="1");
+    CHECK ( exerciseThree(7)=="111");
+    CHECK ( exerciseThree(13)=="1101");
+    CHECK ( exerciseThree(2)=="10");
+    CHECK ( exerciseThree(1)=="1");
+    CHECK ( exerciseThree(64)=="1000000");
+    CHECK ( exerciseThree(205)=="11001101");
+    CHECK ( exerciseThree(0)=="0");
+}
+
+TEST_CASE("Exercise Three Exceptions")
+{
+    CHECK_THROWS_WITH (exerciseThree(-1), Contains("POSITIVE") || Contains("positive"));
+    CHECK_THROWS_WITH (exerciseThree(-110001), Contains("POSITIVE") || Contains("positive"));
+    CHECK_THROWS_WITH (exerciseThree(-32), Contains("POSITIVE") || Contains("positive"));
+}
 // Notes for teacher: 
 // can use variables and libraries
 // can use logic operators and loops
