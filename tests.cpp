@@ -9,19 +9,66 @@
 
 //TESTS
 
-TEST_CASE("ExerciseOne") //Named ExerciseOne, tagged with example
-{
-    
-    //TODO: Set up tests
-    REQUIRE(replace(function()==Approx(5)); //within 1 of 5
-    REQUIRE(replace(function()==Approx(3).margin(5)); //within 5 units of 3
-    
-    //Checks keeps running if fails
-    CHECK(function()==0)
-
-    //Checks if a function throws an exception
-    REQUIRE_THROWS_WITH( openThePodBayDoors(), Contains( "afraid" ) && Contains( "can't do that" ) );
+TEST_CASE("Exercise One") //Named ExerciseOne
+    //Tests regular returns
+    CHECK(exerciseOne("Sphen")==true);
+    CHECK(exerciseOne("Colbert")==true);
+    CHECK(exerciseOne("")==false);
+    CHECK(exerciseOne("Bert")==true);
+    CHECK(exerciseOne(" Bruno")==true);
+    CHECK(exerciseOne("Huckle Berry")==true);
+    CHECK(exerciseOne("Finn ")==true);
+    CHECK(exerciseOne("   ")==false);
+    CHECK(exerciseOne(" ")==true);
+ }
+ TEST_CASE("Exercise One Exceptions") 
+ {  
+    //Tests exceptions
+    REQUIRE_THROWS_WITH( exerciseOne("E1len"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("5teve"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("3den"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("AL4N"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("Hari6ou"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("Kei7h"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("8enjamin"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("A9ua"), Contains( "INVALID" ) || Contains( "number" ) );
+    REQUIRE_THROWS_WITH( exerciseOne("Th0mas"), Contains( "INVALID" ) || Contains( "number" ) );
         
+}
+
+TEST_CASE ("Exercise Two")
+{
+    CHECK(exerciseTwo("111")==7);
+    CHECK(exerciseTwo("11")==3);
+    CHECK(exerciseTwo("101")==5);
+    CHECK(exerciseTwo("00111")==7);
+    CHECK(exerciseTwo("0")==0);
+    CHECK(exerciseTwo("1")==1);
+    CHECK(exerciseTwo("10")==2);
+    CHECK(exerciseTwo("10101010")==170);
+    CHECK(exerciseTwo("100000")==32);
+    CHECK(exerciseTwo("1000000")==64);
+}
+TEST_CASE ("Exercise Two Exceptions")
+{
+    REQUIRE_THROWS_WITH( exerciseTwo("E"), Contains( "ERROR") || Contains("error") );
+    //Checks all letters throw an error
+    for (char i = 'A'; i<='Z'; i++)
+    {
+        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+    }
+    for (i = 'a'; i<='z'; i++)
+    {
+        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+    }
+    REQUIRE_THROWS_WITH( exerciseTwo("110e0"), Contains( "ERROR") || Contains("error") );
+    REQUIRE_THROWS_WITH( exerciseTwo("1832"), Contains( "ERROR") || Contains("error") );
+    REQUIRE_THROWS_WITH( exerciseTwo("45906"), Contains( "ERROR") || Contains("error") );
+    //Checks single digit numbers
+    for (i = '2'; i<='9'; i++)
+    {
+        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+    }
 }
 
 // Notes for teacher: 
