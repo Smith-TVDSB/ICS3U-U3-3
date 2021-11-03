@@ -63,7 +63,7 @@ TEST_CASE ("Exercise Two Exceptions")
         REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
         testValue = "";
     }
-    for (i = 'a'; i<='z'; i++)
+    for (char i = 'a'; i<='z'; i++)
     {
         testValue += i;
         REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
@@ -73,7 +73,7 @@ TEST_CASE ("Exercise Two Exceptions")
     REQUIRE_THROWS_WITH( exerciseTwo("1832"), Contains( "ERROR") || Contains("error") );
     REQUIRE_THROWS_WITH( exerciseTwo("45906"), Contains( "ERROR") || Contains("error") );
     //Checks single digit numbers
-    for (i = '2'; i<='9'; i++)
+    for (char i = '2'; i<='9'; i++)
     {
         testValue += i;
         REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
