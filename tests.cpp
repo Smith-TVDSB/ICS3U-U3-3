@@ -7,6 +7,8 @@
 
 #include "student.hpp" // student implementations
 
+using namespace std;
+using Catch::Matchers::EndsWith;
 //TESTS
 
 TEST_CASE("Exercise One") //Named ExerciseOne
