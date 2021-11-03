@@ -5,12 +5,19 @@
 using namespace std;
 
 // ===============
-// implementations
+// Exercises
 
-//Replace string function
-int function()
+bool exerciseOne(string word)
 {
-	return "0"; // TODO: fix
+	return 0;
 }
 
+int exerciseTwo(string number)
+{
+	return -1;
+}
 
+string exerciseThree(int number)
+{
+	return "0";
+}
