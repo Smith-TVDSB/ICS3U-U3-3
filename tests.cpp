@@ -10,7 +10,7 @@
 //TESTS
 
 TEST_CASE("Exercise One") //Named ExerciseOne
-    //Tests regular returns
+ {   //Tests regular returns
     CHECK(exerciseOne("Sphen")==true);
     CHECK(exerciseOne("Colbert")==true);
     CHECK(exerciseOne("")==false);
