@@ -4,12 +4,14 @@
 
 #define CATCH_CONFIG_MAIN // defines main() automatically
 #include "catch.hpp"
-
+#include<string>
 #include "student.hpp" // student implementations
 
 using namespace std;
 using Catch::Matchers::Contains;
 //TESTS
+
+string testValue = "";
 
 TEST_CASE("Exercise One") //Named ExerciseOne
  {   //Tests regular returns
@@ -57,11 +59,15 @@ TEST_CASE ("Exercise Two Exceptions")
     //Checks all letters throw an error
     for (char i = 'A'; i<='Z'; i++)
     {
-        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+        testValue += i;
+        REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
+        testValue = "";
     }
     for (i = 'a'; i<='z'; i++)
     {
-        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+        testValue += i;
+        REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
+        testValue = "";
     }
     REQUIRE_THROWS_WITH( exerciseTwo("110e0"), Contains( "ERROR") || Contains("error") );
     REQUIRE_THROWS_WITH( exerciseTwo("1832"), Contains( "ERROR") || Contains("error") );
@@ -69,7 +75,9 @@ TEST_CASE ("Exercise Two Exceptions")
     //Checks single digit numbers
     for (i = '2'; i<='9'; i++)
     {
-        REQUIRE_THROWS_WITH( exerciseTwo(i), Contains( "ERROR") || Contains("error") );
+        testValue += i;
+        REQUIRE_THROWS_WITH( exerciseTwo(testValue), Contains( "ERROR") || Contains("error") );
+        testValue = "";
     }
 }
 
